@@ -1,38 +1,59 @@
 #include "function.h"
-#include <iostream>
-#include <ctime>
 using namespace std;
-void randomMassive(int m[],const int SIZE)
+void(*function_selection(int n))(int* m, unsigned SIZE)
 {
-	srand(time(0));
+	if (n == 1)
+	{
+		return minuses;
+		printMassive;
+	}
+	if (n == 2)
+	{
+		return change;
+		printMassive;
+	}
+	else if (n == 3)
+	{
+		return randomMassive;
+		printMassive;
+	}
+	else if (n == 4)
+	{
+		return reverse;
+		printMassive;
+	}
+}
+void randomMassive(int* m, unsigned  SIZE)
+{
+	srand(time(NULL));
 	for (int i=0; i < SIZE; i++)
 	{
 		m[i] = rand() % 100;
 	}
 }
-void printMassive(int m[], const int SIZE)
+void printMassive(int* m, unsigned  SIZE)
 {
 	for (int j = 0; j < SIZE; j++)
 	{
 		cout << m[j] << " " << endl;
 	}
 }
-void change(int m[], const int SIZE)
+void change(int* m, unsigned  SIZE)
 {
 	for (int i = 0; i < SIZE; i++)
 	{
 		m[i] = 5;
 	}
 }
-void minuses(int m[], const int SIZE)
+void minuses(int* m, unsigned  SIZE)
 {
-	for (int i = 1; i < SIZE; i++)
+	for (int i = 0; i < SIZE; i++)
 	{
 		if (m[i] <0)
 			m[i]=abs(m[i]);
 	}
 }
-void reverse(int m[], const int SIZE)
+void reverse(int* m, unsigned  SIZE)
 {
 	for (int i = 0, j = SIZE - 1; i < j; ++i, --j) {
 
@@ -40,4 +61,5 @@ void reverse(int m[], const int SIZE)
 		m[i] = m[j];
 		m[j] = t;
 	}
+	
 }
